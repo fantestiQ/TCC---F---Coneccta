@@ -1,0 +1,243 @@
+/* =============================================
+   CSS para Formulário de Criação de Vagas e Header/Nav
+   ============================================= */
+
+/* ========================
+   Configurações Globais
+   ======================== */
+:root {
+    --primary-color: #0dcaf0;
+    --secondary-color: #0d6efd;
+    --dark-overlay: rgba(0, 0, 0, 0.75);
+    --light-text: #ffffff;
+    --bg-radius: 12px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: url('/images/loginimg.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-text);
+    position: relative;
+}
+
+/* =============================================
+   Header e Navegação (Nav-Menu Livewire)
+   ============================================= */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent; /* Removido o fundo escuro para transparência total */
+    backdrop-filter: none;    /* Removido desfoque */
+    z-index: 1000;
+}
+
+/* Container interno da nav (centraliza itens) */
+header nav .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between !important;
+    padding: 1.5rem 1rem; /* Aumentei o padding-top para posicionar o nav mais abaixo */
+}
+
+/* Logo (colocado à esquerda) */
+#logo-container {
+    display: flex;
+    align-items: center;
+}
+#logo-container img {
+    height: 50px;
+    width: auto;
+}
+
+/* Lista de links (centralizados/direita) */
+header nav .container ul {
+    display: flex !important;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+header nav .container ul li {
+    display: flex;
+    align-items: center;
+}
+header nav .container ul li a,
+header nav .container ul li button {
+    color: var(--light-text);
+    font-weight: 500;
+    text-decoration: none;
+    background: none;
+    border: none;
+    transition: color 0.2s, transform 0.2s;
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+}
+header nav .container ul li a:hover,
+header nav .container ul li button:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Espaçamento abaixo do header para conteúdo */
+.main-content {
+    padding-top: 80px;
+}
+
+/* =============================================
+   Container Principal do Formulário
+   ============================================= */
+.login-box {
+    background-color: var(--dark-overlay);
+    backdrop-filter: blur(6px);
+    padding: 2.5rem 2rem;
+    border-radius: var(--bg-radius);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    z-index: 1;
+    margin-top: 1rem;
+}
+
+.login-box h2 {
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+/* =============================================
+   Estilos para Campos de Input e Textarea
+   ============================================= */
+.input-box {
+    margin-bottom: 1.25rem;
+}
+
+.input-box label {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.input-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--bg-radius);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--light-text);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.input-field::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(13, 202, 240, 0.2);
+}
+
+textarea.input-field {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.error {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 0.85rem;
+    color: #ff6b6b;
+}
+
+/* =============================================
+   Botão de Envio
+   ============================================= */
+.submit-btn {
+    width: 100%;
+    padding: 0.85rem;
+    border: none;
+    border-radius: var(--bg-radius);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(13, 202, 240, 0.4);
+}
+
+/* =============================================
+   Link de Voltar
+   ============================================= */
+.sign-up-link {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.sign-up-link a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.sign-up-link a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* =============================================
+   Texto de Sucesso / Feedback
+   ============================================= */
+.alert {
+    padding: 0.75rem 1rem;
+    border-radius: var(--bg-radius);
+    margin-bottom: 1.25rem;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.alert-success {
+    background-color: rgba(40, 167, 69, 0.2);
+    border: 1px solid #28a745;
+    color: var(--light-text);
+}
+
+/* =============================================
+   Responsividade
+   ============================================= */
+@media (max-width: 768px) {
+    header nav .container ul {
+        gap: 1rem;
+    }
+    .login-box {
+        padding: 2rem 1.5rem;
+        margin-top: 1.5rem;
+    }
+}

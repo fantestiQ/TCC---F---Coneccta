@@ -1,0 +1,580 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+/* ============================
+   2) Header / Nav
+   ============================ */
+header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px; /* Ajuste conforme a altura real do seu menu */
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+header nav {
+  width: 100%;
+}
+
+header nav .container {
+  max-width: 1200px;    /* opcional, para não esticar demais em telas gigantes */
+  margin: 0 auto;       /* centraliza o conteúdo horizontalmente */
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between !important; /* logo à esquerda, links à direita */
+  padding: 0 1rem;
+}
+
+/* 4) Lista em linha */
+header nav .container ul {
+  display: flex !important;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* 5) Estilo dos links */
+header nav .container ul li a,
+header nav .container ul li button {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  background: none;
+  border: none;
+  transition: color 0.2s, transform 0.2s;
+  cursor: pointer;
+  
+}
+header nav .container ul li a:hover,
+header nav .container ul li button:hover {
+  color: #0dcaf0;
+  transform: translateY(-2px);
+}
+
+.nav-link {
+    color: #fff;
+    background: none;
+    border: none;
+    text-decoration: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.2s;
+    display: inline-block;
+}
+
+#logo-container img {
+  height: 50px;  /* ou outro valor que se ajuste ao header */
+  width: auto;
+}
+
+body {
+  margin: 0;
+  background: url('/images/loginimg.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+
+a {
+    font-family: poppins;
+    text-decoration: none;
+    color: #ffffff;
+    margin-right: 35px;
+    margin-left: 22px;
+}
+
+
+
+p{
+    font-size: 14px;
+    color: #ffffff;
+    font-family: poppins;
+}
+
+h2{
+    font-size: 20px;
+    color: #ffffff;
+    font-family: poppins;
+    margin-bottom: 20px;
+}
+h3{
+    font-size: 20px;
+    color: #ffffff;
+    font-family: poppins;
+    margin-bottom: 20px;
+}
+
+
+.input-field:focus{
+    width: 105%;
+}
+
+.forgot{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+section{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #ffffff;
+    font-family: poppins;
+}
+
+.input-submit{
+    position: relative;
+}
+
+.submit-btn{
+    width: 100%;
+    height: 60px;
+    background: #ffffff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.input-submit label{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    color: #000000;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.submit-btn:hover{
+    background: #646464;
+    transform: scale(1.05,1);
+}
+
+.sign-up-link{
+    text-align: center;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.sign-up-link a{
+    color: #fffdfd;
+    font-weight: 600;
+}
+
+.background-image {
+    position: absolute;
+    width: 100%; 
+    height: 100%;
+    object-fit: cover; 
+    z-index: -1; 
+}
+
+/* Estilização da checkbox */
+.custom-checkbox {
+    appearance: none; 
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ffffff; 
+    border-radius: 5px; 
+    background-color: transparent; 
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-checkbox:checked {
+    background-color: #ffffff; 
+    border-color: #ffffff; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-checkbox:checked::before {
+    content: "✔";
+    color: #333232; 
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Ajuste do espaçamento entre a checkbox e o texto */
+#remember-me {
+    margin-left: 10px; 
+    color: #ffffff; 
+    font-size: 14px;
+    font-family: Poppins, sans-serif;
+    cursor: pointer; 
+}
+
+
+@media  screen and (max-width: 678px) {
+    .carrossel .lista .item .conteudo {
+       padding-right: -10px;
+    }
+    .carrossel .lista .item .conteudo .titulo {
+        font-size: 30px;
+    }
+    .thumbnail {
+        bottom: 30px;
+        gap: 10px;
+    }
+    
+    .thumbnail .item {
+        width: 80px;
+        height: 120px;
+    }
+    .thumbnail .titulo{
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .thumbnail {
+        gap: 5px;
+    }
+
+    .thumbnail .item {
+        width: 80px;
+        height: 120px;
+    }
+    .thumbnail .titulo{
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 1024px) {    
+    .carrossel{
+        margin-top: -45px;
+    }
+    header {
+        max-width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    header a {
+        margin: 10px 0;
+    }
+
+    .carrossel {
+        height: 100vh; 
+        margin-top: -45px;
+    }
+
+    .carrossel .lista .item .conteudo .titulo {
+        font-size: 2em;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    header a {
+        margin: 10px 0;
+    }
+
+    .carrossel {
+        height: 100vh; 
+        margin-top: -45px;
+    }
+
+    .carrossel .lista .item .conteudo .titulo {
+        font-size: 2em;
+        text-align: center;
+    }
+    
+}
+
+@media screen and (max-width: 1024px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    header a {
+        margin: 10px 0;
+    }
+
+    .carrossel {
+        height: 100vh; 
+        margin-top: -45px;
+    }
+
+    .carrossel .lista .item .conteudo .titulo {
+        font-size: 2em;
+        text-align: center;
+    }
+    
+}
+
+
+
+/* Container Principal */
+.pe-main-container {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 80px; /* Espaço para o nav-menu */
+}
+
+.pe-content-container {
+    position: relative;
+    z-index: 100;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* Seção de Perfil */
+.pe-perfil {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pe-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 2rem;
+}
+
+.pe-company-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 15px;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.pe-info h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.pe-info p {
+    color: #ddd;
+    margin-bottom: 0.5rem;
+}
+
+.pe-description h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.pe-description p {
+    color: #ddd;
+    line-height: 1.6;
+}
+
+/* Botões */
+.pe-btn {
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    border: none;
+    font-size: 0.95rem;
+}
+
+.pe-btn-primary {
+    background-color: #4a6bff;
+    color: white;
+}
+
+.pe-btn-primary:hover {
+    background-color: #3a5bef;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 107, 255, 0.3);
+}
+
+.pe-btn-danger {
+    background-color: transparent;
+    color: #ff4a4a;
+    border: 1px solid #ff4a4a;
+}
+
+.pe-btn-danger:hover {
+    background-color: rgba(255, 74, 74, 0.1);
+    transform: translateY(-2px);
+}
+
+.pe-btn-success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pe-btn-success:hover {
+    background-color: #3e8e41;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+/* Seção de Vagas */
+.pe-vagas-section {
+    margin-top: 3rem;
+}
+
+.pe-vagas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.pe-vagas-header h2 {
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+.pe-vagas-lista {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.pe-vaga-item {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.pe-vaga-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.pe-vaga-titulo {
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.pe-vaga-detalhes p {
+    color: #ddd;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.pe-vaga-acoes {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.2rem;
+}
+
+.pe-vaga-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.pe-vaga-btn-edit {
+    background-color: #4a6bff;
+    color: white;
+}
+
+.pe-vaga-btn-delete {
+    background-color: #ff4a4a;
+    color: white;
+}
+
+.pe-vaga-btn-edit:hover {
+    background-color: #3a5bef;
+    transform: translateY(-2px);
+}
+
+.pe-vaga-btn-delete:hover {
+    background-color: #e04040;
+    transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .pe-content-container {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .pe-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .pe-vagas-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .pe-vaga-acoes {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .pe-btn {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .pe-content-container {
+        padding: 1rem;
+    }
+    
+    .pe-info h1 {
+        font-size: 1.6rem;
+    }
+    
+    .pe-vaga-item {
+        padding: 1.2rem;
+    }
+    
+    #logo-container img {
+        height: 50px;
+    }
+}
