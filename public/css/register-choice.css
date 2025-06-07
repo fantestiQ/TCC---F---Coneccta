@@ -1,0 +1,85 @@
+/* public/css/register-choice.css */
+@import url('/css/perfil-empresa.css');
+
+/* Container que cobre toda a tela, abaixo do nav */
+.rc-main {
+  min-height: calc(100vh - 80px); /* considera altura do nav-menu */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: url('/images/registro-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Card central */
+.rc-card {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  padding: 2.5rem 3rem;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* Título */
+.rc-card h2 {
+  color: #fff;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+/* Botões de escolha */
+.rc-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.rc-buttons a {
+  display: inline-block;
+  padding: 0.75rem 2.5rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Estilo específico para cada botão */
+.rc-btn-candidato {
+  background-color: #4A6BFF;
+  color: #fff;
+}
+.rc-btn-candidato:hover {
+  background-color: #3A5BEF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74,107,255,0.3);
+}
+
+.rc-btn-empresa {
+  background-color: #FF4A4A;
+  color: #fff;
+}
+.rc-btn-empresa:hover {
+  background-color: #E04040;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255,74,74,0.3);
+}
+
+/* Link de voltar ao login */
+.rc-back {
+  margin-top: 1rem;
+}
+.rc-back a {
+  color: #ddd;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.rc-back a:hover {
+  color: #fff;
+}

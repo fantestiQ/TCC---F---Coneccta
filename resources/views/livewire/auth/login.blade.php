@@ -25,7 +25,7 @@
             </button>
         </form>
         <div class="sign-up-link">
-            <p>Não tem uma conta? <a href="#">Crie uma conta</a></p>
+            <p>Não tem uma conta? <a href="{{ route ('register.choice')}}">Crie uma conta</a></p>
         </div>
     </div>
 

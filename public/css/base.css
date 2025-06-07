@@ -1,0 +1,83 @@
+/* public/css/base.css */
+
+/* =============================================
+   Variáveis e reset
+   ============================================= */
+:root {
+  --primary: #0dcaf0;
+  --secondary: #0d6efd;
+  --dark-overlay: rgba(0,0,0,0.75);
+  --light: #fff;
+  --radius: 12px;
+  --trans: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* =============================================
+   Body e Background
+   ============================================= */
+body {
+  min-height: 100vh;
+  background: url('/images/loginimg.png') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--light);
+}
+
+/* =============================================
+   Header / Nav (Livewire nav-menu)
+   ============================================= */
+header {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  background: transparent;
+  z-index: 1000;
+}
+
+header nav .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between !important;
+  padding: 1.5rem 1rem;
+}
+
+#logo-container img {
+  height: 50px;
+  width: auto;
+}
+
+header nav .container ul {
+  list-style: none;
+  display: flex !important;
+  gap: 2rem;
+}
+
+header nav .container ul li a,
+header nav .container ul li button {
+  color: var(--light);
+  text-decoration: none;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
+  padding: 0.3rem 0.5rem;
+}
+
+header nav .container ul li a:hover,
+header nav .container ul li button:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* Dá espaço para o conteúdo não ficar atrás do header */
+.main-content {
+  padding-top: 80px;
+}

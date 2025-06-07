@@ -1,0 +1,89 @@
+/* public/css/register-form.css */
+@import url('/css/perfil-empresa.css'); /* seu CSS base, se quiser reaproveitar */
+
+/* Container principal sob o nav */
+.rf-main {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: url('/images/form-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Card do formulário */
+.rf-card {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 12px;
+  padding: 2rem;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* Título dentro do card */
+.rf-card h2 {
+  color: #fff;
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  text-align: center;
+}
+
+/* Estilo dos campos */
+.rf-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.rf-card label {
+  color: #ddd;
+  font-size: 0.9rem;
+}
+.rf-card input,
+.rf-card select {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+}
+.rf-card input:focus,
+.rf-card select:focus {
+  outline: 2px solid #4A6BFF;
+}
+
+/* Botão de submit */
+.rf-btn-submit {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background-color: #4A6BFF;
+  color: #fff;
+}
+.rf-btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(74,107,255,0.4);
+}
+
+/* Link para voltar */
+.rf-back {
+  margin-top: 1rem;
+  text-align: center;
+}
+.rf-back a {
+  color: #ccc;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.rf-back a:hover {
+  color: #fff;
+}
