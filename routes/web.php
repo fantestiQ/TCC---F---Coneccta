@@ -15,6 +15,7 @@ use App\Http\Controllers\VagaController;
 use App\Http\Controllers\FormVagasController;
 use App\Http\Controllers\TesteController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\VagaPublicaController;
 
 
 
@@ -24,16 +25,17 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::get('/', [PrincipalController::class, 'principal'])->name('principal');
 Route::get('/telas', [TelasController::class, 'telas'])->name('screen');
 Route::view('/teste', 'site.teste');
-Route::get('vagas', [CandidatoController::class, 'vagas'])->name('vagas');
 Route::get('form', [FormVagasController::class, 'principal'])->name('form');
 Route::get('teste', [TesteController::class, 'teste'])->name('teste');
+
+Route::get('vagas', [VagaPublicaController::class, 'index'])->name('vagas');
 
 // Remove ou comente a rota padrão:
 // Auth::routes(['register' => true]); // desabilita o register automático
 
 
 // 1) Tela de escolha
-Route::get('register', [RegisterController::class, 'showChoice'])->name('register.choice');
+Route::get('register', [RegisterController::class, 'showChoice'])->name('register');
 
 // 2) Formulário candidato
 Route::get('register/candidato', [RegisterController::class, 'showCandidateForm'])->name('register.candidato.form');
@@ -69,17 +71,20 @@ Route::prefix('candidato')
         Route::get('perfil', [PerfilCandidatoController::class, 'show'])->name('perfil');
         Route::put('perfil', [PerfilCandidatoController::class, 'update'])->name('perfil.update');
 
-        // Rotas para as vagas específicas do candidato
-        Route::get('vagas-disponiveis', [CandidaturaController::class, 'index'])->name('vagas.disponiveis');
-        // Se precisar, pode adicionar mais rotas aqui, tipo detalhes de candidatura, etc.
+        // Vagas disponíveis para candidato
+         Route::get('vagas', [CandidatoController::class,'vagasDisponiveis'])->name('vagas.disponiveis');
 
-        // Rotas de Candidaturas — lista, aprovar/recusar
-        Route::get('candidaturas', [CandidaturaController::class, 'index'])->name('candidaturas.index');
+         // Histórico de candidaturas
+         Route::get('candidaturas', [CandidatoController::class,'historicoCandidaturas'])->name('candidaturas.index');
 
         // Se quiser ação de aprovar/recusar via POST:
-        Route::post('candidaturas/{candidatura}/aprovar', [CandidaturaController::class, 'aprovar'])->name('candidaturas.aprovar');
-        Route::post('candidaturas/{candidatura}/recusar', [CandidaturaController::class, 'recusar'])->name('candidaturas.recusar');
+        Route::post('vagas/{vaga}/candidatar',[CandidaturaController::class,'store'])->name('vagas.candidatar');
+        Route::post('vagas/{vaga}/recusar',   [CandidaturaController::class,'recusar'])->name('vagas.recusar');
 
+         // Recebe o POST do form de upload
+        Route::post('perfil/curriculo/upload', [PerfilCandidatoController::class, 'uploadCurriculo'])->name('perfil.curriculo.upload');
+        // Exibe (ou força download) do arquivo
+        Route::get('perfil/curriculo/ver', [PerfilCandidatoController::class, 'verCurriculo'])->name('perfil.curriculo.ver');
     });
 
     // Rotas específicas para Empresa
@@ -94,4 +99,6 @@ Route::prefix('candidato')
         //Crud vaga
         Route::resource('vagas', VagaController::class);
 
+        Route::get('vagas', [VagaController ::class, 'index'])->name('vagas.empresa');
+        
     });

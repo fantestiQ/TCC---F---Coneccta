@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil da Empresa | Coneccta</title>
     <link rel="stylesheet" href="{{asset('/css/perfil-empresa.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/cards.css')}}">
+    @livewireStyles
 </head>
 <body>
 
@@ -37,41 +39,12 @@
             <!-- Seção de Vagas -->
             <div class="pe-vagas-section">
                 <div class="pe-vagas-header">
-                    <h2 class="pe-vagas-title">Vagas Publicadas</h2>
-                      <a href="{{ route('empresa.vagas.create') }}" class="pe-btn pe-btn-success">Criar Nova Vaga</a>
-                </div>
-
-                <!-- Lista de Vagas -->
-                <div class="pe-vagas-lista">
-                    <!-- Vaga 1 -->
-                    <div class="pe-vaga-item">
-                        <h3 class="pe-vaga-titulo">Desenvolvedor Front-end</h3>
-                        <div class="pe-vaga-detalhes">
-                            <p><strong>Salário:</strong> R$ 6.000,00 - R$ 8.000,00</p>
-                            <p><strong>Descrição:</strong> Desenvolvimento de interfaces web responsivas utilizando React.js.</p>
-                            <p><strong>Requisitos:</strong> HTML5, CSS3, JavaScript, React, Git.</p>
-                        </div>
-                        <div class="pe-vaga-acoes">
-                            <button class="pe-vaga-btn pe-vaga-btn-edit">Editar Vaga</button>
-                            <button class="pe-vaga-btn pe-vaga-btn-delete">Excluir Vaga</button>
-                        </div>
-                    </div>
-
-                    <!-- Vaga 2 -->
-                    <div class="pe-vaga-item">
-                        <h3 class="pe-vaga-titulo">Desenvolvedor Back-end</h3>
-                        <div class="pe-vaga-detalhes">
-                            <p><strong>Salário:</strong> R$ 7.000,00 - R$ 9.500,00</p>
-                            <p><strong>Descrição:</strong> Desenvolvimento de APIs e serviços backend em Node.js.</p>
-                            <p><strong>Requisitos:</strong> Node.js, Express, MongoDB, Docker.</p>
-                        </div>
-                        <div class="pe-vaga-acoes">
-                            <button class="pe-vaga-btn pe-vaga-btn-edit">Editar Vaga</button>
-                            <button class="pe-vaga-btn pe-vaga-btn-delete">Excluir Vaga</button>
-                        </div>
-                    </div>
+                    <h2 class="pe-vagas-title">Vagas Publicadas</h2>  <a href="{{ route('empresa.vagas.create') }}" class="pe-btn pe-btn-success">Criar Nova Vaga</a> 
                 </div>
             </div>
+             @foreach(auth()->user()->empresa->vagas as $vaga)
+                 @livewire('vaga-card', ['vaga' => $vaga, 'context' => 'empresa'], key('empresa-'.$vaga->id) )
+            @endforeach
         </div>
     </div>
 
@@ -88,5 +61,6 @@
             });
         });
     </script>
+    @livewireScripts
 </body>
 </html>

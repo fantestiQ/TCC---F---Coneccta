@@ -18,8 +18,7 @@ return new class extends Migration
             $table->text('descricao');
             $table->decimal('salario', 10,2);
             $table->string('escolaridade', 255);
-            $table->enum('status', ['ativa','encerrada'])->default('ativa');
-            $table->string('localizacao', 255)->nullable();
+            $table->enum('status', ['ativa','encerrada'])->default('ativa');           
             $table->timestamps();
 
             $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');

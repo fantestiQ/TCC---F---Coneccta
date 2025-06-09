@@ -25,7 +25,8 @@ class RegisterController extends Controller
     }
 
     public function registerCandidate(Request $request)
-    {
+    {   
+       
         $this->validatorCandidate($request->all())->validate();
         event(new Registered($user = $this->createCandidate($request->all())));
         auth()->login($user);
@@ -38,9 +39,10 @@ class RegisterController extends Controller
             'name'            => ['required','string','max:255'],
             'email'           => ['required','string','email','max:255','unique:users'],
             'password'        => ['required','string','min:8','confirmed'],
-            'cpf'             => ['required','string'],
+            'cpf'             => ['required','string','max:8'],
             'data_nascimento' => ['required','date'],
-            // adicione aqui outros campos de Candidato...
+            'telefone'        => ['required','string','max:15'],
+            'endereco'        => ['required','string','max:255'],
         ]);
     }
 
@@ -57,7 +59,8 @@ class RegisterController extends Controller
         $user->candidato()->create([
             'cpf'             => $data['cpf'],
             'data_nascimento' => $data['data_nascimento'],
-            // preencha outros campos...
+            'telefone'        => $data['telefone'],
+            'endereco'        => $data['endereco'],
         ]);
 
         return $user;
@@ -71,6 +74,7 @@ class RegisterController extends Controller
 
     public function registerCompany(Request $request)
     {
+        
         $this->validatorCompany($request->all())->validate();
         event(new Registered($user = $this->createCompany($request->all())));
         auth()->login($user);
@@ -83,8 +87,9 @@ class RegisterController extends Controller
             'nome_fantasia' => ['required','string','max:255'],
             'email'         => ['required','string','email','max:255','unique:users'],
             'password'      => ['required','string','min:8','confirmed'],
-            'cnpj'          => ['required','string'],
-            // adicione aqui outros campos de Empresa...
+            'cnpj'          => ['required','string', 'max:14'],
+            'endereco'      => ['required','string','max:255'],
+            'telefone'      => ['required','string','max:15'],
         ]);
     }
 
@@ -101,7 +106,8 @@ class RegisterController extends Controller
         $user->empresa()->create([
             'cnpj'          => $data['cnpj'],
             'nome_fantasia' => $data['nome_fantasia'],
-            // preencha outros campos...
+            'endereco'      => $data['endereco'],
+            'telefone'      => $data['telefone'],
         ]);
 
         return $user;

@@ -58,7 +58,7 @@
                             <a href="{{ route('empresa.perfil') }}" class="nav-link">Perfil da Empresa</a>
                         </li>
                         <li class="ms-4">
-                            <a href="{{ route('vagas') }}" class="nav-link">Vagas Públicas</a>
+                            <a href="{{ route('empresa.vagas.empresa') }}" class="nav-link">Vagas Públicas</a>
                         </li>
                         <li >
                             <button  type="button"  wire:click="logout">

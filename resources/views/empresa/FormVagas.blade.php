@@ -37,10 +37,10 @@
         </div>
 
         <div class="input-box">
-          <input type="text" name="escolaridade"
-                 class="input-field" placeholder="Escolaridade"
-                 value="{{ old('escolaridade') }}">
-          @error('escolaridade') <span class="error">{{ $message }}</span> @enderror
+          <input type="text" name="requisitos"
+                 class="input-field" placeholder="Requisitos"
+                 value="{{ old('Requisitos"') }}">
+          @error('Requisitos"') <span class="error">{{ $message }}</span> @enderror
         </div>
 
         <div class="input-box">
@@ -61,7 +61,7 @@
       </form>
 
       <div class="sign-up-link">
-        <a href="{{ route('empresa.vagas.index') }}">← Voltar para o Perfil</a>
+        <a href="{{ route('empresa.perfil') }}">← Voltar para o Perfil</a>
       </div>
     </div>
   </main>

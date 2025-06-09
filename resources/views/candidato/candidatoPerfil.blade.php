@@ -33,33 +33,49 @@
                     <p>Empresa especializada em desenvolvimento de software e soluções tecnológicas, com mais de 10 anos de mercado e uma equipe de profissionais altamente qualificados. Nosso objetivo é transformar ideias em soluções digitais inovadoras que impulsionam os negócios de nossos clientes.</p>
                 </div>
             </div>
-                <div class="pe-vagas-lista">
-                    <!-- Vaga 1 -->
-                    <div class="pe-vaga-item">
-                        <h3 class="pe-vaga-titulo">Currículo</h3>
-                        <div class="pe-vaga-acoes">
-                            <button class="pe-vaga-btn pe-vaga-btn-edit">Carregar Currículo</button>
-                            <button class="pe-vaga-btn pe-vaga-btn-edit">Ver Currículo</button>
-                        </div>
+            <div class="pe-vaga-item">
+                <h3 class="pe-vaga-titulo">Currículo</h3>
+                
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        <i class="fas fa-check-circle"></i> {{ session('success') }}
                     </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                @endif
 
-    <script>
-        // Scripts específicos podem ser adicionados aqui
-        document.addEventListener('DOMContentLoaded', function() {
-            // Exemplo de interação
-            document.querySelectorAll('.pe-vaga-item').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    if (!e.target.classList.contains('pe-vaga-btn')) {
-                        this.querySelector('.pe-vaga-detalhes').classList.toggle('active');
-                    }
-                });
-            });
-        });
-    </script>
+                <form action="{{ route('candidato.perfil.curriculo.upload') }}" 
+                    method="POST" 
+                    enctype="multipart/form-data"
+                    class="pe-vaga-form">
+                    @csrf
+                    <div class="file-input-container">
+                        <input type="file" 
+                            name="curriculo"
+                            id="curriculo"
+                            accept=".pdf,.doc,.docx"
+                            class="@error('curriculo') is-invalid @enderror">
+                        
+                        @error('curriculo')
+                            <div class="error-message">
+                                <i class="fas fa-exclamation-circle"></i> {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <button type="submit" class="pe-vaga-btn pe-vaga-btn-edit">
+                        <i class="fas fa-upload"></i> Enviar Currículo
+                    </button>
+                </form>
+
+             @if(auth()->user()->candidato->resume_path)
+                    <div class="curriculo-actions">
+                        <a href="{{ route('candidato.perfil.curriculo.ver') }}"
+                        target="_blank"
+                        class="btn-secondary">
+                        <i class="fas fa-eye"></i> Visualizar Currículo
+                        </a>
+                    </div>
+             @endif
+         </div>
+     </div>
 </body>
 </html>

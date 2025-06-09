@@ -24,9 +24,9 @@
             </div>
 
             <div class="pe-vagas-section">
-                    <div class="pe-vagas-lista">
+                <div class="pe-vagas-lista">
                     @foreach($vagas as $vaga)
-                      @livewire('vaga-card', ['vaga'    => $vaga,'context' => 'candidato'], key('candidato-'.$vaga->id))
+                        @livewire('vaga-card', ['vaga' => $vaga, 'context' => 'guest'], key('guest-'.$vaga->id))
                     @endforeach
                 </div>
             </div>

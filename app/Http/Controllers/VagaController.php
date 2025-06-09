@@ -16,7 +16,7 @@ class VagaController extends Controller
       $vagas = Vaga::where('empresa_id', auth()->user()->empresa->id)
                      ->orderBy('created_at', 'desc')
                      ->paginate(10);
-        return view('vagas.index', compact('vagas'));
+        return view('empresa.vagasEmpresa', compact('vagas'));
     }
 
     /**
@@ -37,7 +37,7 @@ class VagaController extends Controller
             'descricao'   => 'required|string',
             'salario'     => 'required|numeric',
             'localizacao' => 'required|string|max:255',
-            'escolaridade' => 'required|string|max:255',
+            'requisitos' => 'required|string|max:255',
 
         
         ]);
@@ -53,9 +53,16 @@ class VagaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Vaga $vaga)
     {
-        //
+        $vaga->load('empresa');
+
+        $user = Auth::user();
+        $candidato = ($user && $user->role === 'candidato')
+        ? $user->candidato
+        : null;
+
+        return view('vagas.show', compact('vaga','candidato'));
     }
 
     /**
