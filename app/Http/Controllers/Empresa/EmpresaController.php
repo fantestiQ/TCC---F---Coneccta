@@ -16,11 +16,24 @@ class EmpresaController extends Controller
         if (!$user->relationLoaded('empresa')) {
             $user->load('empresa');
         }
+
+        
         
         return view('empresa.empresa', [
             'user' => $user,
             'empresa' => $user -> empresa
         ]);
     }
+
+    public function dashboard()
+    {
+        // passa a primeira vaga para o componente
+        $first = auth()->user()->vagas()->first();
+        return view('empresa.empresa', [
+            'initialVagaId' => $first ? $first->id : null,
+        ]);
+    }
+
+    
  
 }

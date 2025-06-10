@@ -16,6 +16,7 @@ use App\Http\Controllers\FormVagasController;
 use App\Http\Controllers\TesteController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\VagaPublicaController;
+use App\Http\Controllers\Empresa\CurriculoController;
 
 
 
@@ -92,10 +93,15 @@ Route::prefix('candidato')
     ->name('empresa.')
     ->middleware(['auth', 'role:empresa'])
     ->group(function () {
-        Route::get('dashboard', [EmpresaController::class, 'empresa'])->name('dashboard');
+        
         Route::get('perfil', [PerfilEmpresaController::class, 'show'])->name('perfil');
         Route::put('perfil', [PerfilEmpresaController::class, 'update'])->name('perfil.update');
+
+
+        Route::get('dashboard', [EmpresaController::class,'dashboard'])->name('dashboard');
         
+        Route::get('candidaturas/{candidatura}/curriculo', [CurriculoController::class, 'show'])->name('candidatura.curriculo');
+
         //Crud vaga
         Route::resource('vagas', VagaController::class);
 

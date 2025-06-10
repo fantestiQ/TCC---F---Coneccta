@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Candidato;
 
 class Candidatura extends Model
 {
     protected $table = 'candidaturas';
 
-    protected $fillable = ['vaga_id', 'candidato_id', 'status'];
+    protected $fillable = ['vaga_id', 'candidato_id', 'status', 'empresa_status'];
 
     // Status possíveis
     public const STATUS_APLICADO = 'aplicado';

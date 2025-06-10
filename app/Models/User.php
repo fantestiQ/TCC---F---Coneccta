@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class User extends Authenticatable
 {
@@ -55,5 +56,17 @@ class User extends Authenticatable
     public function empresa()
     {
         return $this->hasOne(Empresa::class);
+    }
+
+     public function vagas(): HasManyThrough
+    {
+        return $this->hasManyThrough(
+            Vaga::class,      // modelo final
+            Empresa::class,   // modelo intermediário
+            'user_id',        // FK em empresas -> users.id
+            'empresa_id',     // FK em vagas    -> empresas.id
+            'id',             // PK em users
+            'id'              // PK em empresas
+        );
     }
 }
